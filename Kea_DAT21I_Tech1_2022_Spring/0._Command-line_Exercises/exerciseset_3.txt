@@ -706,198 +706,455 @@ touch shot.txt
 
 152: create a file called advice.txt. Put the text 'proportion experienced proportion depression support' in it and copy it so there is also a advice.txt with same content
 
+touch advice.txt
+
+echo "proportion experienced proportion depression support"
+
+cp advice.txt advice1.txt
+
 153: create a file called terminal.txt
+
+touch terminal.txt
 
 154: output the sizes of the files in the directory
 
+ls -l
+
 155: output what's in the directory
+
+ls
 
 156: create a file called medal.txt and rename it so that it's called honor.txt instead. Hint: This should be done in 2 commands
 
+touch medal.txt
+
+mv medal.txt honor.txt
+
 157: delete the last file you created
+
+rm lastFileCreated.txt
 
 158: create a file called on.txt and rename it so that it's called advice.txt instead. Hint: This should be done in 2 commands
 
+touch on.txt
+
+mv on.txt advice.txt
+
 159: output hidden files
+
+ls -ls
 
 160: output hidden files
 
+ls -la
+
 161: delete the last file you created
+
+rm lastFileCreated.txt
 
 162: output the full path you are on
 
+pwd
+
 163: move one level up
+
+cd ..
 
 164: output the content of any file in the directory
 
+cat anyFile
+
 165: output who the active user is
+
+id -un
 
 166: echo 'recession rain excuse evaluate on' into the file
 
+echo "recession rain excuse evaluate on" >> fileName.txt
+
 167: output the full path you are on
+
+pwd
 
 168: write something in a file called surprise.txt
 
+echo "something" >> surprise.txt
+
 169: output hidden files
+
+ls -la
 
 170: output who the active user is
 
+is -un
+
 171: create a file called advantage.txt and rename it so that it's called panel.txt instead. Hint: This should be done in 2 commands
+
+touch advantage.txt
+
+mov advantage.txt panel.txt
 
 172: delete the last file you created
 
+rm lastFileCreated.txt
+
 173: output the content of any file in the directory
+
+cat anyFile.txt
 
 174: move two folders up
 
+cd ../..
+
 175: move two folders up
+
+cd ../..
 
 176: move one level up
 
+cd ..
+
 177: delete the last file you created
+
+rm lastFileCreated.txt
 
 178: output the sizes of the files in the directory
 
+ls -l
+
 179: create a directory recession and move into the directory
+
+mkdir recession
+
+cd recession
 
 180: create a file called recommend.txt. Put the text 'identity interference recommend shot shallow' in it and copy it so there is also a ethics.txt with same content
 
+touch recommend.txt
+
+echo "identity interference recommend shot shallow" >> recommend.txt
+
+cp recommend.txt ethics.txt
+
 181: output the sizes of the files in the directory
+
+ls -l
 
 182: output what's in the directory
 
+ls
+
 183: if there are any directories in the folder then move inside any one of them
+
+cd folderName
 
 184: create a file called stock.txt. Put the text 'appreciate advantage recommend recession ditch' in it and copy it so there is also a salvation.txt with same content
 
+touch stock.txt
+
+echo " appreciate advantage recommend recession ditch"
+
+cp stock.txt salvation.txt
+
 185: output hidden files
+
+ls -la
 
 186: output hidden files
 
+ls -la
+
 187: create a file called beat.txt
+
+touch beat.txt
 
 188: open a file in the terminal and see the content
 
+nano fileName.txt
+
 189: echo 'relative proportion speculate recession experienced' into the file
+
+echo "relative proporion speculate recession experienced" >> fileName.txt
 
 190: create a file called relative.txt
 
+touch relative.txt
+
 191: delete the last file you created
+
+rm lastFileCreated
 
 192: create a file called needle.txt
 
+touch needle.txt
+
 193: create a file called relative.txt. Put the text 'difficulty pioneer on advice difficulty' in it and copy it so there is also a rain.txt with same content
+
+touch relative.txt
+
+echo "difficulty pioneer on advice difficulty" >> relative.txt
+
+cp relative.txt rain.txt
 
 194: output who the active user is
 
+id -un
+
 195: create a file called needle.txt and rename it so that it's called banish.txt instead. Hint: This should be done in 2 commands
+
+touch needle.txt
+
+mv needle.txt banish.txt
 
 196: output the content of any file in the directory
 
+cat anyFile.txt
+
 197: create a file called sister.txt and rename it so that it's called recommend.txt instead. Hint: This should be done in 2 commands
+
+touch sister.txt
+
+mv sister.txt recommend.txt
 
 198: delete the last file you created
 
+rm lastFileCreated.txt
+
 199: if there are any directories in the folder then move inside any one of them
+
+cd directoryName
 
 200: output the content of any file in the directory
 
+cat anyFileInTheDirectory.txt
+
 201: open a file in the terminal and see the content
+
+nano fileName.txt
 
 202: create a file called sister.txt and rename it so that it's called interference.txt instead. Hint: This should be done in 2 commands
 
+touch sister.txt
+
+mv sister.txt interface.txt
+
 203: output what's in the directory
+
+ls
 
 204: create a file called correspondence.txt. Put the text 'architecture appreciate salvation proportion recommend' in it and copy it so there is also a difficulty.txt with same content
 
+echo "architecture appreciate salvation proportion recommend" >> correspondence.txt
+
+cp correspondence.txt difficulty.txt
+
 205: create a directory recession and move into the directory
+
+mkdir recession
+cd recession
 
 206: move one level up
 
+cd ..
+
 207: write something in a file called experienced.txt
+
+echo "something" >> experienced.txt
 
 208: create a file called shot.txt and rename it so that it's called appreciate.txt instead. Hint: This should be done in 2 commands
 
+touch shot.txt
+
+mv shot.txt appreciate.txt
+
 209: output the content of any file in the directory
+
+cat anyFile.txt
 
 210: output hidden files
 
+ls -la
+
 211: create two directories correspondence and sister and move into sister
+
+mkdir correspondence sister
+
+cd sister
 
 212: output the content of any file in the directory
 
+cat fileName.txt
+
 213: if there are any directories in the folder then move inside any one of them
+
+cd directoryName
 
 214: write something in a file called pen.txt
 
+echo "something" >> pen.txt
+
 215: open a file in the terminal and see the content
+
+nano fileName.txt
 
 216: create a file called shot.txt. Put the text 'ditch bay correspondence terminal cater' in it and copy it so there is also a ditch.txt with same content
 
+touch shot.txt
+
+echo "ditch bay correspondence terminal cater"
+
+cp shot.txt ditch.txt
+
 217: echo 'responsibility hill speculate architecture excuse' into the file
+
+echo "responsibility hill speculate architecture excuse" >> fileName
 
 218: output the sizes of the files in the directory
 
+ls -l
+
 219: output what's in the directory
+
+ls
 
 220: create two directories pray and medal and move into medal
 
+mkdir pray and medal
+
+cd medal
+
 221: create a file called proportion.txt and immediately delete it
+
+touch proportion.txt
+
+rm proportion.txt
 
 222: open a file in the terminal and see the content
 
+nano fileName
+
 223: write something in a file called honor.txt
+
+echo "something" >> honor.txt
 
 224: output the sizes of the files in the directory
 
+ls -l
+
 225: output the content of any file in the directory
+
+ls
 
 226: write something in a file called recommend.txt
 
+echo "something" >> recommend.txt
+
 227: output who the active user is
+
+id -un
 
 228: create a directory rider and move into the directory
 
+mkdir rider
+
+cd rider
+
 229: output the full path you are on
+
+pwd
 
 230: create a file called speculate.txt and rename it so that it's called sister.txt instead. Hint: This should be done in 2 commands
 
+touch speculate.txt
+
+mc touch.txt sister.txt
+
 231: open a file in the terminal and see the content
+
+nano fileName.txt
 
 232: echo 'sister cater architecture degree cater' into the file
 
+echo "sister cater architecture degree cater" >> fileName.txt
+
 233: create a file called speculate.txt
+
+touch speculate.txt
 
 234: delete the last file you created
 
+rm speculate.txt
+
 235: output the sizes of the files in the directory
+
+ls -l
 
 236: output what's in the directory
 
+ls
+
 237: create a file called proportion.txt
+
+touch proportion.txt
 
 238: create a file called surprise.txt
 
+touch surprise.txt
+
 239: create a directory evaluate and move into the directory
+
+mkdir evaluate
+
+cd evaluate
 
 240: delete the last folder you created
 
+rm -r lastFolderCreated
+
 241: create a file called stock.txt and rename it so that it's called support.txt instead. Hint: This should be done in 2 commands
+
+touch stock.txt
+
+mv stock.txt support.txt
 
 242: create a file called experienced.txt and rename it so that it's called bay.txt instead. Hint: This should be done in 2 commands
 
+touch experienced.txt
+
+mv experienced.txt bay.txt
+
 243: create a file called proportion.txt
+
+touch proportion.txt
 
 244: open a file in the terminal and see the content
 
+nano fileName.txt
+
 245: write something in a file called on.txt
+
+echo "something" >> on.txt
 
 246: delete the last file you created
 
+rm lastFileCreated.txt
+
 247: delete the last file you created
+
+rm lastFileCreated
 
 248: create two directories experienced and interference and move into interference
 
+mkdir experienced and interface
+
+cd interface
+
 249: output the sizes of the files in the directory
 
+ls -la
+
 250: create a file called surprise.txt and immediately delete it
+
+touch surprise.txt
+
+rm surprise.txt
