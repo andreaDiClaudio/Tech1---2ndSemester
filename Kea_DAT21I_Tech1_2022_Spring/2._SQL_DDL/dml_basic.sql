@@ -22,6 +22,12 @@ UPDATE movies SET title = "Spiderman vs. Godzilla" WHERE title = "spiderman";
 
 ALTER TABLE movies DROP COLUMN year;
 
+###################
+-- 04/03/22
+###################
+
+
+
 
 
 
