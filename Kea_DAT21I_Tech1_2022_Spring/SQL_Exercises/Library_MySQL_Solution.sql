@@ -128,40 +128,105 @@ UNION SELECT tauthor.cName, tauthor.cSurname
 FROM tauthor WHERE cName = "William";
 
 -- 19. Show the name and surname of the first chronological member of the library using subqueries.
-SELECT cName, cSurname FROM tmember WHERE cCPR = (SELECT cCPR FROM tmember ORDER BY dNewMember ASC LIMIT 1);
+SELECT cName, cSurname
+FROM tmember
+WHERE cCPR = (SELECT cCPR FROM tmember
+ORDER BY dNewMember ASC LIMIT 1);
 
 -- 20 For each publishing year, show the number of book titles published by publishing companies from countries that constitute the nationality for at least three authors. Use subqueries.
-SELECT DISTINCT(nPublishingYear), COUNT(nPublishingYear) AS numberOfBook FROM tbook WHERE nPublishingCompanyID IN (SELECT tpublishingcompany.nPublishingCompanyID FROM tpublishingcompany WHERE nCountryID IN (SELECT tnationality.nCountryID FROM tnationality WHERE nAuthorID IN (SELECT tauthor.nAuthorID FROM tauthor) GROUP BY tnationality.nCountryID HAVING count(*) > 3)) GROUP BY nPublishingYear ORDER BY nPublishingYear;
+SELECT DISTINCT(nPublishingYear), COUNT(nPublishingYear) AS numberOfBook
+FROM tbook
+WHERE nPublishingCompanyID
+          IN (SELECT tpublishingcompany.nPublishingCompanyID
+          FROM tpublishingcompany
+          WHERE nCountryID
+                    IN (SELECT tnationality.nCountryID
+                    FROM tnationality
+                    WHERE nAuthorID
+                              IN (SELECT tauthor.nAuthorID FROM tauthor)
+                    GROUP BY tnationality.nCountryID HAVING count(*) > 3))
+GROUP BY nPublishingYear ORDER BY nPublishingYear;
 
 -- 21 Show the name and country of all publishing companies with the headings "Name" and "Country"
-SELECT tpublishingcompany.cName Name, tcountry.cName FROM tpublishingcompany JOIN tcountry ON tpublishingcompany.nCountryID = tcountry.nCountryID;
+SELECT tpublishingcompany.cName Name, tcountry.cName
+FROM tpublishingcompany
+    JOIN tcountry
+        ON tpublishingcompany.nCountryID = tcountry.nCountryID;
 
 -- 22 Show the titles of the books published between 1926 and 1978 that were not published by the publishing company with ID 32.
-SELECT tbook.cTitle FROM tbook WHERE nPublishingYear BETWEEN "1926-01-01" AND "1978-01-01" AND NOT tbook.nPublishingCompanyID = 32;
+SELECT tbook.cTitle
+FROM tbook
+WHERE nPublishingYear
+    BETWEEN "1926-01-01" AND "1978-01-01" AND NOT tbook.nPublishingCompanyID = 32;
 
 -- 23 Show the name and surname of the members who joined the library after 2016 and have no address
-SELECT tmember.cName, tmember.cSurname FROM tmember WHERE dNewMember > "2016-12-31" AND cAddress IS NULL;
+SELECT tmember.cName, tmember.cSurname
+FROM tmember
+WHERE dNewMember > "2016-12-31" AND cAddress IS NULL;
 
 -- 24  Show the country codes for countries with publishing companies. Exclude repeated values.
-SELECT DISTINCT tpublishingcompany.nCountryID FROM tpublishingcompany WHERE nPublishingCompanyID IS NOT NULL;
+SELECT DISTINCT tpublishingcompany.nCountryID
+FROM tpublishingcompany
+WHERE nPublishingCompanyID IS NOT NULL;
 
 -- 25  Show the titles of books whose title starts by "The Tale" and that are not published by "Lynch Inc".
-SELECT tbook.cTitle FROM tbook  WHERE cTitle LIKE ("The Tale%") AND nPublishingCompanyID IN (SELECT nPublishingCompanyID FROM tpublishingcompany WHERE cName NOT IN ("Lynch Inc"));
+SELECT tbook.cTitle
+FROM tbook
+WHERE cTitle
+          LIKE ("The Tale%") AND nPublishingCompanyID
+                                     IN (SELECT nPublishingCompanyID
+                                     FROM tpublishingcompany
+                                     WHERE cName NOT IN ("Lynch Inc"));
 
 -- 26  Show the list of themes for which the publishing company "Lynch Inc" has published books, excluding repeated values.
-SELECT DISTINCT ttheme.cName FROM ttheme WHERE nThemeID IN (SELECT nThemeID FROM tbooktheme WHERE nBookID IN (SELECT nBookID FROM tbook WHERE nPublishingCompanyID IN (SELECT nPublishingCompanyID FROM tpublishingcompany WHERE tpublishingcompany.cName = "Lynch Inc" )));
+SELECT DISTINCT ttheme.cName
+FROM ttheme
+WHERE nThemeID
+          IN (SELECT nThemeID
+          FROM tbooktheme
+          WHERE nBookID
+                    IN (SELECT nBookID
+                    FROM tbook
+                    WHERE nPublishingCompanyID
+                              IN (SELECT nPublishingCompanyID
+                              FROM tpublishingcompany
+                              WHERE tpublishingcompany.cName = "Lynch Inc" )));
 
 -- 27 Show the titles of those books which have never been loaned
-SELECT cTitle FROM tbook WHERE nBookID NOT IN (SELECT nBookID FROM tbookcopy WHERE cSignature IN (SELECT cSignature FROM tloan WHERE dLoan ));
+SELECT cTitle
+FROM tbook
+WHERE nBookID
+          NOT IN (SELECT nBookID
+          FROM tbookcopy
+          WHERE cSignature
+                    IN (SELECT cSignature
+                    FROM tloan
+                    WHERE dLoan ));
 
 -- 28  For each publishing company, show its number of existing books under the heading "No. of Books".
-SELECT DISTINCT tbook.nPublishingCompanyID, COUNT(cTitle) AS "No. of books" FROM tbook GROUP BY nPublishingCompanyID;
+SELECT DISTINCT tbook.nPublishingCompanyID, COUNT(cTitle) AS "No. of books"
+FROM tbook
+GROUP BY nPublishingCompanyID;
 
 -- 29. Show the number of members who took some book on a loan during 2013.
-SELECT COUNT(cCPR) FROM tmember WHERE cCPR IN (SELECT cCPR FROM tloan WHERE dLoan BETWEEN "2013-01-01" AND "2013-12-31");
+SELECT COUNT(cCPR)
+FROM tmember
+WHERE cCPR
+          IN (SELECT cCPR
+          FROM tloan
+          WHERE dLoan BETWEEN "2013-01-01" AND "2013-12-31");
 
 -- 30 For each book that has at least two authors, show its title and number of authors under the heading "No. of Authors".
-SELECT tbook.cTitle, COUNT(tauthorship.nAuthorID) AS "No. of Authors" FROM tbook JOIN tauthorship ON tbook.nBookID = tauthorship.nBookID WHERE tbook.nBookID IN (SELECT tauthorship.nBookID FROM tauthorship GROUP BY  tauthorship.nBookID HAVING COUNT(nAuthorID) > 1 ) GROUP BY cTitle;
+SELECT tbook.cTitle, COUNT(tauthorship.nAuthorID) AS "No. of Authors"
+FROM tbook
+    JOIN tauthorship
+        ON tbook.nBookID = tauthorship.nBookID
+WHERE tbook.nBookID
+          IN (SELECT tauthorship.nBookID
+          FROM tauthorship
+          GROUP BY  tauthorship.nBookID
+          HAVING COUNT(nAuthorID) > 1 )
+GROUP BY cTitle;
 
 SELECT * FROM tauthor; -- nAuthorId + cName + cSurname
 SELECT * FROM tauthorship; -- nBookID + nAuthorID

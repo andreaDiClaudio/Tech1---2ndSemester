@@ -38,18 +38,32 @@ FROM Album
 WHERE Name LIKE 'Samba%' AND GenreId = 11;
 
 -- 6. For each genre, show the average length of its songs in minutes (without indicating seconds). Use the headers “Genre” and “Minutes”, and include only genres that have any song longer than half an hour.
-SELECT Genre.Name AS Genre, AVG(FORMAT(Milliseconds / 60,000, 1)) AS minutes FROM Genre JOIN Track T on Genre.GenreId = T.GenreId GROUP BY Genre.Name;
+SELECT Genre.Name AS Genre, AVG(FORMAT(Milliseconds / 60,000, 1)) AS minutes
+FROM Genre
+    JOIN Track T on Genre.GenreId = T.GenreId
+GROUP BY Genre.Name;
 
 -- 7 How many client companies have no state?
 SELECT COUNT(Company) FROM Customer WHERE State IS NULL;
 
--- 8 For each employee with clients in the “USA”, “Canada” and “Mexico” show the number of clients from these countries s/he has given support, only when this number is higher than 6. Sort the query by number of clients. Regarding the employee, show his/her first name and surname separated by a space. Use “Employee” and “Clients” as headers.
+-- 8 For each employee with clients in the “USA”, “Canada” and “Mexico” show the number of clients from these countries s/he has given support, only when this number is higher than 6. Sort the query by number of clients.
+--   Regarding the employee, show his/her first name and surname separated by a space. Use “Employee” and “Clients” as headers.
+SELECT CONCAT(employee.firstname, " ", employee.lastname) AS Employee, COUNT(*) AS Client
+FROM customer
+    JOIN employee ON customer.supportrepid = employee.employeeid
+WHERE customer.country = "USA" OR customer.country = "Mexico" OR customer.country = "Canada"
+GROUP BY employeeid HAVING client > 6;
 
 -- 9 For each client from the “USA”, show his/her surname and name (concatenated and separated by a comma) and their fax number. If they do not have a fax number, show the text “S/he has no fax”. Sort by surname and first name.
+SELECT CONCAT(LastName, ', ', FirstName) AS client, COALESCE(Fax, 'S/He has no fax') AS fax
+FROM Customer
+ORDER BY LastName, FirstName;
 
 -- For each employee, show his/her first name, last name, and their age at the time they were hired.
+SELECT FirstName, LastName, FLOOR(DATEDIFF(HireDate, BirthDate)/365.25)
+FROM Employee;
 
-
+USE Chinook;
 SELECT * FROM Chinook.Album; -- AlbumID(PK), Title, ArtistID(FK)
 SELECT * FROM Chinook.Artist; -- ArtistID(PK), Name
 SELECT * FROM Chinook.Customer; -- CostumerID(PK), FirstName, LastName, Company, Address, City ,State, Country, PostalCode, Phone, Fax, Email, SupportRepID(FK)
