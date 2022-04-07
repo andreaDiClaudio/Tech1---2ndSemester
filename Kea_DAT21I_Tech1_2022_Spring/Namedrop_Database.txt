@@ -1,0 +1,15 @@
+- List 6 Relational Databases
+1) MySQL
+2) IBM Db2
+3) SAP HANA
+4) PostgreSQL
+5) Amazon Aurora
+6) Azure SQL Database
+- List at least 1 of each of the NoSQL categories.
+1) Cassandra
+2) MongoDB
+3)DataStax
+4)Neo4j
+- List 2 in-memory databases
+1) H2 Database
+2)HSQLDB
